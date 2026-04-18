@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>核销结果</title>
+
+<style>
+body{
+    margin:0;
+    background:#f2f2f2;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",Helvetica;
+}
+
+/* 顶部 */
+.header{
+    height:52px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    border-bottom:1px solid #e6e6e6;
+    position:relative;
+}
+
+.header:before{
+    content:"‹";
+    position:absolute;
+    left:14px;
+    font-size:28px;
+    color:#333;
+}
+
+/* 主体 */
+.main{
+    text-align:center;
+    margin-top:110px;
+}
+
+/* 小字 */
+.small{
+    color:#b2b2b2;
+    font-size:14px;
+    margin-bottom:40px;
+}
+
+/* 图标 */
+.icon{
+    width:80px;
+    height:80px;
+    background:#07c160;
+    border-radius:50%;
+    margin:0 auto;
+    position:relative;
+}
+
+.icon:after{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:24px;
+    width:24px;
+    height:14px;
+    border-left:5px solid #fff;
+    border-bottom:5px solid #fff;
+    transform:rotate(-45deg);
+}
+
+/* 标题 */
+.title{
+    font-size:22px;
+    margin-top:18px;
+    color:#333;
+}
+
+/* 描述 */
+.desc{
+    font-size:17px;
+    color:#666;
+    margin-top:8px;
+}
+
+/* 时间 */
+.time{
+    font-size:16px;
+    color:#999;
+    margin-top:8px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">核销结果</div>
+
+<div class="main">
+    <div class="small">核销结果</div>
+
+    <div class="icon"></div>
+
+    <div class="title">核销成功</div>
+    <div class="desc">13元车票【次卡券】</div>
+    <div class="time" id="time">加载中...</div>
+</div>
+
+<script>
+// 实时时间（每秒更新）
+function updateTime(){
+    var now = new Date();
+
+    var str = now.getFullYear() + "-" +
+        String(now.getMonth()+1).padStart(2,'0') + "-" +
+        String(now.getDate()).padStart(2,'0') + " " +
+        String(now.getHours()).padStart(2,'0') + ":" +
+        String(now.getMinutes()).padStart(2,'0') + ":" +
+        String(now.getSeconds()).padStart(2,'0');
+
+    document.getElementById("time").innerHTML = str;
+}
+
+// 先执行一次
+updateTime();
+
+// 每秒执行（关键）
+setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
